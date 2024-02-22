@@ -1,0 +1,34 @@
+<!-- NavBar -->
+{% load static %}
+
+<nav class="navbar navbar-expand-lg fixed-top shadow navbar-light bg-white" aria-label="Template Navbar">
+  
+
+    <div class="container bg-white">
+
+      <a class="navbar-brand" href="{% url 'index' %}">
+        <img src="{% static 'img/favicon128.png' %}" alt="" class="logo">
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#MynavbarHeader" aria-controls="MynavbarHeader" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse justify-content-center" id="MynavbarHeader">
+        <ul class="navbar-nav">
+          <li class="nav-item">
+            <a class="nav-link active text-primary" aria-current="page" href="{% url 'index' %}">Logo</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="{% url 'catalogue' %}">Listar</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link text-primary" href="admin">Admin</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+
+</nav>
+
+

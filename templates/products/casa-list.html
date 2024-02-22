@@ -1,0 +1,143 @@
+{% extends 'layouts/base.html' %} 
+{% load static %}
+
+
+{% block content %}
+<!-- Catalog Content -->
+<div class="container-fluid mt-5 p-0">
+	<div class="row g-0 mt-n3">
+		<!-- Filters Catalgue -->
+		<aside class="col-lg-4 col-xl-3 border-top-lg border-end-lg shadow-sm px-3 px-xl-4 px-xxl-5 pt-lg-2">
+			<div id="filters-sidebar" class="offcanvas-lg offcanvas-start">
+				<!-- Filters Header -->
+				<div class="offcanvas-header d-block border-bottom pt-0 pt-lg-4 px-lg-0">
+					<ul class="nav nav-tabs mb-0">
+						<li class="nav-item">
+							<a class="nav-link active" href="#">Particular
+								<i class="fi-rent fs-base me-2"></i>
+							</a>
+						</li>
+						<li class="nav-item">
+							<a class="nav-link" href="#">Leilão
+								<i class="fi-rent fs-base me-2"></i>
+							</a>
+						</li>
+					</ul>
+				</div>
+				<div class="offcanvas-body py-lg-4">
+					<div class="pb-4 mb-2">
+						<h3 class="h6">Localização</h3>
+						<select class="form-select mb-2">
+							<option value="" disabled="">Escolha Cidade</option>
+							<option value="São José">São José</option>
+							<option value="Palhoça">Palhoça</option>
+						</select>
+					</div>
+					<div class="pb-4 mb-2"></div>
+					<div class="pb-4 mb-2"></div>
+					<div class="border-top py-4">
+						<button class="btn btn-outline-primary" type="button">
+							Resetar Filtro
+							<i></i>
+						</button>
+					</div>
+				</div>
+			</div>
+		</aside>	
+		<!-- List Catalg -->
+		<div class="col-lg-8 col-xl-9 position-relative overflow-hidden pb-5 pt-4 px-3 px-xl-4 px-xxl-5">
+			<div class="mb-3 pt-md-2" aria-label="Breadcrumb">
+				<ol class="breadcrumb">
+	        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+	        <li class="breadcrumb-item active" aria-current="page">Listar</li>
+				</ol>
+			</div>
+			<!-- Title -->
+			<div class="d-sm-flex align-items-center justify-content-between pb-3 pb-sm-4">
+				<h1 class="h2 mb-sm-0">Imóveis à Venda</h1>
+			</div>
+			<!-- Sorting -->
+			<div class="d-flex flex-sm-row flex-column align-items-sm-center align-items-stretch my-2">
+				<div class="d-flex align-items-center flex-shrink-0">
+					<label class="fs-sm me-2 pe-1 text-nowrap" for="sortby">
+						Ordenar: 
+						<i class="fi-arrows-sort text-muted mt-n1 me-2"></i>
+					</label>
+					<select id="sortby" class="form-select form-select-sm">
+						<option>Novidades</option>
+						<option>Ofertas</option>
+					</select>
+				</div>			
+				<hr class="d-none d-sm-block w-100 mx-4">
+				<div class="d-none d-sm-flex align-items-center flex-shrink-0 text-muted">
+					<i class="fi-check-circle me-2">
+						<span class="fs-sm mt-n1">x Resultados</span>
+					</i>
+				</div>
+			</div>
+			<!-- Catalog Grid -->
+			<div class="row g-4 py-4">
+				{% if casas %}
+					{% for casa in casas %}
+						<!-- Item -->
+						<div class="col-sm-6 col-xl-4 my-5">
+							<!-- Card -->
+							<div class="card shadow-sm card-hover border-0 h-100">
+								<div class="tns-carousel-wrapper card-img-top card-img-hover">
+									<a class="img-overlay"></a>
+									<div class="position-absolute start-0 top-0 pt-3 ps-3">
+										<span class="d-table badge bg-success mb-1">Novo</span>
+									</div>
+									<!-- Transition 
+									<div class="tns-outer" id="tns1-ow">
+										<div class="tns-controls" aria-label="Carousel Navigation" tabindex="0"></div>
+										<div class="tns-liveregion tns-visually-hidden" aria-live="polite" aria-atomic="true"></div>
+										<div class="tns-ovh" id="tns1-mw"></div>						
+									</div>
+									-->
+								</div>
+								<!-- Body -->
+								<div class="card-body position-relative pb-3">
+									<h4 class="mb-1 fs-xs fw-normal text-uppercase text-primary"></h4>
+									<h3 class="h6 mb-2 fs-base">
+										<a class="nav-link stretched-link" href="{% url 'casa-detail' casa.id %}"></a>
+									</h3>
+									<p class="mb-2 fs-sm text-muted"> {{ casa.address }} </p>
+									<div class="fw-bold">
+										{{ casa.price }}
+										<i class="fi-cash mt-n1 me-2 lead align-middle opacity-70"></i>
+									</div>
+								</div>
+								<!-- Footer -->
+								<div class="card-footer d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap">
+									<div class="d-inline-block mx-1 px-2 fs-sm">
+										<span class="d-inline-block mx-1 px-2 fs-sm">
+											3 cama
+											<i class="fi-bed ms-1 mt-n1 fs-lg text-muted"></i>
+										</span>
+										<span class="d-inline-block mx-1 px-2 fs-sm">
+											<i class="fi-bed ms-1 mt-n1 fs-lg text-muted"></i>
+											1 Banheiro
+										</span>
+										<span class="d-inline-block mx-1 px-2 fs-sm">
+											1 Garagem
+											<i class="fi-bed ms-1 mt-n1 fs-lg text-muted"></i>
+										</span>								
+									</div>
+								</div>
+							</div>
+						</div> 
+					{% endfor %}
+		    {% else %}
+		      <div class="col-md-12">
+		        <p>No Casa MOFO!!!  :(</p>
+		      </div>
+		    {% endif %} 
+			</div>
+		</div>
+
+	</div>
+</div>
+
+
+{% endblock %}

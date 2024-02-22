@@ -1,0 +1,97 @@
+{% extends 'layouts/base.html' %} 
+{% load static %}
+
+
+{% block content %}
+<section class="d-flex align-items-center overlay bg-cover" style="background-image: url('static/img/banner.jpg');">
+  <div class="container py-lg-7 text-white overlay-content">
+    <div class="row">
+      <div class="col-xl-8 mb-3">
+        <h1 class="display-3 fw-bold text-shadow">Encontre seu Imóvel!</h1>
+        <p class="text-lg text-shadow mb-6">Aqui estão as melhores ofertas!!</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="container position-relative mt-my">  
+
+  <div class="card text-center bg-transparent border border-0">
+    
+    <div class="card-header px-2">
+      <ul class="nav nav-tabs card-header-tabs">
+        <li class="nav-item me-1 ps-0">
+        <a class="nav-link text-primary active" aria-current="true" href="#">Proprietario</a>
+        </li>
+
+        <li class="nav-item bg-secondary rounded-top">
+          <a class="nav-link text-light" href="#">Leilão</a>
+        </li>
+
+      </ul>
+    </div>
+
+    <div class="card-body bg-white shadow rounded-bottom">
+        <form action="#">
+          <div class="row">
+            <div class="col-lg-4 form-group d-flex flex-row align-items-center">
+              <select class="form-select mb-2" aria-label="Cidade">
+                <option selected disabled="">Cidade</option>
+                <option value="1">São José</option>
+                <option value="2">Palhoça</option>
+              </select>
+            </div> 
+            <div class="col-md-6 col-lg-3 form-group d-flex flex-row align-items-center">
+                <select class="form-select mb-2" aria-label="Tipo Imóvel">
+                  <option selected disabled="">Tipo</option>
+                  <option value="1">Casa</option>
+                  <option value="2">Apartamento</option>
+                </select> 
+            </div>
+
+            <div class="col-md-6 col-lg-3 form-group d-flex flex-row align-items-center">
+                <select class="form-select mb-2" aria-label="Preço">
+                  <option selected disabled="">Preço</option>
+                  <option value="1">100</option>
+                  <option value="2">200</option>
+                </select> 
+            </div>
+
+            <div class="col-lg-2 d-grid form-group d-flex flex-row align-items-center">
+              <button class="btn btn-primary" type="submit">Pesquisar</button>
+            </div>
+
+          </div>
+        </form> 
+    </div>
+
+  </div>
+</div>
+
+{% if casas_list_index %}
+  <section class="py-6">
+    <div class="container pt-5">
+      <div class="row mb-5">
+        {% for casa in casas_list_index %}
+        <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
+          <div class="card shadow">
+            <img src="{{ casa.image.url }}" class="card-img-top rounded-top img-fluid" alt="Imagem do Anúncio">
+            <div class="card-body">
+              <span class="h6 icon-tertiary small"><span class="fas fa-medal me-2"></span>CASA</span>
+              <h3 class="h5 card-title mt-3"> {{ casa.description }} </h3>
+              <p class="card-text">Endereço: {{ casa.address }}</p>
+              <p class="card-text">Preço: R$ {{ casa.price }}</p>
+              <a href="{% url 'casa-detail' casa.id %}" class="stretched-link"></a>
+            </div>
+          </div>
+        </div> 
+        {% endfor %}
+      </div>    
+    </div>
+  </section>
+{% else %}
+  <p>Null ou blank.</p>
+{% endif %}
+
+
+{% endblock %}
