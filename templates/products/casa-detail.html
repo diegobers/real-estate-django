@@ -3,143 +3,102 @@
 
 {% block title %}Detalhes{% endblock title %}
 
+
 {% block content %}
-
-<section class="container">
-  
-    <!-- Breadcrumb -->
-    <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
-      <ol class="breadcrumb bg-body-tertiary">
-        <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
-        <li class="breadcrumb-item active" aria-current="page">Detalhes do Anúncio</li>
-      </ol>
-    </nav>
-
-    <div class="row gy-5 pt-lg-2">
-      <div class="col-lg-7">
-        
-        <div class="d-flex flex-column">
-          <div class="order-lg-1 order-2">     
-            <!-- Carousel with Thumbnails -->
-            <!-- Carousel wrapper -->
-            <div class="carousel-wrapper">  
-              <div id="carouselIndex" class="carousel slide" data-bs-ride="true">
-                <!-- slides -->
-                <div class="carousel-inner rounded-3 shadow">
-                  <div class="carousel-item active">
-                    <img id="carouselImg" src="{{ casa.image.url }}" class="img-flui d-block w-100" alt="...">
-                  </div>
-                  <div class="carousel-item">
-                    <img id="carouselImg" src="{{ casa.photo1.url }}" class="img-flui d-block w-100" alt="...">
-                  </div>
+<section class="container">  
+  <!-- Breadcrumb -->
+  <nav class="mb-3 pt-md-3" aria-label="breadcrumb">
+    <ol class="breadcrumb bg-body-tertiary">
+      <li class="breadcrumb-item"><a href="{% url 'index' %}">Home</a></li>
+      <li class="breadcrumb-item active" aria-current="page">Detalhes do Anúncio</li>
+    </ol>
+  </nav>
+  <div class="row gy-5 pt-lg-2">
+    <div class="col-lg-7">
+      <p class="mb-2 fs-sm text-muted"> {{ casa.description }} </p>
+      <div class="d-flex flex-column">
+        <div class="order-lg-1 order-2">     
+          <!-- Carousel with Thumbnails -->
+          <!-- Carousel Wrapper -->
+          <div class="carousel-wrapper">  
+            <div id="carouselIndex" class="carousel slide h-100" data-bs-ride="true">
+              <!-- slides -->
+              <div class="carousel-inner rounded-3 shadow">
+                <div class="carousel-item active">
+                  <img id="carouselImg" src="{{ casa.image.url }}" class="img-flui d-block w-100" alt="...">
                 </div>
-
-                <!-- Controls -->
-                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
-                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Previous</span>
-                </button>
-                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
-                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                  <span class="visually-hidden">Next</span>
-                </button>
+                <div class="carousel-item">
+                  <img id="carouselImg" src="{{ casa.photo1.url }}" class="img-flui d-block w-100" alt="...">
+                </div>
               </div>
-            </div>
-            <!-- Thumbnails -->
-            <div class="carousel-indicators mb-4">
-              <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
-                <img class="img-fluig d-block w-90 rounded" src="{{ casa.image.url }}" style="height: 90px;"/>
+              <!-- Controls -->
+              <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndex" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
               </button>
-              <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="1" aria-label="Slide 2">
-                <img class="img-flui d-block w-90 rounded" src="{{ casa.photo1.url }}" style="height: 90px"/>
+              <button class="carousel-control-next" type="button" data-bs-target="#carouselIndex" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
               </button>
             </div>
           </div>
-          <!-- Page title + Features-->
-          <div class="order-lg-2 order-1">
+          <!-- Thumbnails -->
+          <div class="carousel-indicators mb-4">
+            <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1">
+              <img class="img-fluig d-block w-90 rounded" src="{{ casa.image.url }}" style="height: 90px;"/>
+            </button>
+            <button type="button" data-bs-target="#carouselIndex" data-bs-slide-to="1" aria-label="Slide 2">
+              <img class="img-flui d-block w-90 rounded" src="{{ casa.photo1.url }}" style="height: 90px"/>
+            </button>
           </div>
-
         </div>
-        <!-- Overview -->      
-        <h2 class="">Descrição</h2>
-        <p>Texto Descrição</p>
-          <!--
-          <div class="col">
-             Rental agent
-            <h2 class="h5">Rental agent</h2>
-            <div class="card card-horizontal">
-              <div class="card-img-top bg-position-center-x" style="background-image: url(img/real-estate/agents/01.jpg);"></div>
-              <blockquote class="blockquote card-body p-4">
-                <p class="mb-4">Amet libero morbi venenatis ut est. Iaculis leo ultricies nunc id ante adipiscing. Vel metus odio at faucibus ac. Neque id placerat et id ut.</p>
-                <footer class="d-flex justify-content-between">
-                  <div class="pe-3">
-                    <h6 class="mb-0">Kristin Watson</h6>
-                    <div class="text-muted fw-normal fs-sm mb-3">Imperial Property Group Agent</div><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle me-2 mb-2" href="#"><i class="fi-facebook"></i></a><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle me-2 mb-2" href="#"><i class="fi-twitter"></i></a><a class="btn btn-icon btn-light-primary btn-xs shadow-sm rounded-circle me-2 mb-2" href="#"><i class="fi-instagram"></i></a>
-                  </div>
-                  <div><span class="star-rating"><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i><i class="star-rating-icon fi-star-filled active"></i></span>
-                    <div class="text-muted fs-sm mt-1">24 reviews</div>
-                  </div>
-                </footer>
-              </blockquote>
-            </div>
-          </div>  
-          -->
+        <!-- Page Title -->
+        <div class="order-lg-2 order-1">
+        </div>
       </div>
-
-      <!-- Sidebar with details-->
-      <aside class="col-lg-5">
-          <div class="px-lg-5 px-sm-1">
-            <div class="d-flex"></div>
-            <h3 class="mb-2"> Valor Imóvel:</h3>
-            <h2 class="mb-4 pb-2">R$: {{ casa.price }}</h2>
-            <!--  Property details -->
-            <div class="card border-0 bg-secondary mb-4">
-              <div class="card-body">
-                <h5 class="mb-0 pb-3">Detalhes do Imóvel</h5>
-                <ul class="list-unstyled mt-n2 mb-0">
-                  <li class="mt-2 mb-0">
-                    <b>Tipo: </b>
-                    Apartamento
-                  </li>
-                  <li class="mt-2 mb-0">
-                    <b>Data: </b>
-                    {{ casa.createdAt }}
-                  </li>
-                  <li class="mt-2 mb-0">
-                    <b>Código: </b>
-                    {{ casa.id }}
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <a class="btn btn-lg btn-primary w-100 mb-3" href=""> Agendar Visita</a>
-
-            <div class="card border-0 bg-secondary mb-4">
-              <div class="card-body">
-                <h5></h5>
-                <ul class="list-unstyled row row-cols-md-2 row-cols-1 gy-2 mb-0 text-nowrap">
-                  <li class="col">
-                    <i class="fi-wifi mt-n1 me-2 fs-lg align-middle"> Wifi</i>
-                  </li>
-                  
-                  <li class="col">
-                    <i class="fi-wifi mt-n1 me-2 fs-lg align-middle"> Wifi</i>
-                  </li>
-                  
-                </ul>
-              </div>
-            </div>
-
-          </div>
-      </aside>
-    
+      <!-- Overview -->      
+      <h2 class="">Descrição</h2>
+      <p>Texto Descrição</p>
     </div>
-
-  
+    <!-- Sidebar with Details-->
+    <aside class="col-lg-5">
+      <div class="px-lg-5 px-sm-1">
+        <div class="d-flex"></div>
+        <h3 class="mb-2"> Valor Imóvel:</h3>
+        <h2 class="mb-4 pb-2">R$: {{ casa.price }}</h2>
+        <!--  Property details -->
+        <div class="card border-0 bg-secondary mb-4">
+          <div class="card-body">
+            <h5 class="mb-0 pb-3">Detalhes do Imóvel</h5>
+            <ul class="list-unstyled mt-n2 mb-0">
+              <li class="mt-2 mb-0">
+                <b>Tipo: </b> {{ casa.category }}
+              </li>
+              <li class="mt-2 mb-0">
+                <b>Data: </b> {{ casa.created }}
+              </li>
+              <li class="mt-2 mb-0">
+                <b>Código: </b> {{ casa.id }}
+              </li>
+            </ul>
+          </div>
+        </div>
+        <a class="btn btn-lg btn-primary w-100 mb-3" href=""> Agendar Visita</a>
+        <div class="card border-0 bg-secondary mb-4">
+          <div class="card-body">
+            <h5></h5>
+            <ul class="list-unstyled row row-cols-md-2 row-cols-1 gy-2 mb-0 text-nowrap">
+              <li class="col">
+                <i class="fi-wifi mt-n1 me-2 fs-lg align-middle"> Wifi</i>
+              </li>
+              <li class="col">
+                <i class="fi-wifi mt-n1 me-2 fs-lg align-middle"> Wifi</i>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </aside>
+  </div>  
 </section>
-
-
-
-
 {% endblock %}

@@ -1,97 +1,118 @@
 {% extends 'layouts/base.html' %} 
-{% load static %}
+{% load static widget_tweaks %}
 
 
 {% block content %}
-<section class="d-flex align-items-center overlay bg-cover" style="background-image: url('static/img/banner.jpg');">
-  <div class="container py-lg-7 text-white overlay-content">
+<!-- Hero -->
+<section class="d-flex overlay bg-cover" style="background-image: url('static/img/banner.jpg');">
+  <div class="container align-self-center py-lg-5 text-white overlay-content">
     <div class="row">
-      <div class="col-xl-8 mb-3">
-        <h1 class="display-3 fw-bold text-shadow">Encontre seu Imóvel!</h1>
-        <p class="text-lg text-shadow mb-6">Aqui estão as melhores ofertas!!</p>
+      <div class="col-sm">
+        <h1>Encontre seu Imóvel!</h1>
+        <h3>Aqui estão as melhores ofertas!!</h3>
       </div>
     </div>
   </div>
 </section>
-
-<div class="container position-relative mt-my">  
-
-  <div class="card text-center bg-transparent border border-0">
-    
-    <div class="card-header px-2">
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item me-1 ps-0">
-        <a class="nav-link text-primary active" aria-current="true" href="#">Proprietario</a>
-        </li>
-
-        <li class="nav-item bg-secondary rounded-top">
-          <a class="nav-link text-light" href="#">Leilão</a>
-        </li>
-
-      </ul>
-    </div>
-
-    <div class="card-body bg-white shadow rounded-bottom">
-        <form action="#">
-          <div class="row">
-            <div class="col-lg-4 form-group d-flex flex-row align-items-center">
-              <select class="form-select mb-2" aria-label="Cidade">
-                <option selected disabled="">Cidade</option>
-                <option value="1">São José</option>
-                <option value="2">Palhoça</option>
-              </select>
+<!-- Form Search -->
+<section>
+  <div class="container position-relative mt-8"> 
+    <div class="card text-center bg-transparent border border-0"> 
+      <div class="card-body bg-white shadow rounded"> 
+        <form class="form-group" action="{% url 'search' %}" method="GET">
+          <div class="row justify-content-around">
+            <div class="col-lg-2 d-flex flex-row align-items-center">
+            {% render_field form.id class="form-control" type="text" placeholder="Código..." %}
+            </div>
+            <div class="col-lg-2 d-flex flex-row align-items-center">
+            {% render_field form.category class="form-select" placeholder="Tipo" %}
+            </div>
+            <div class="col-lg-2 d-flex flex-row align-items-center">
+            {% render_field form.city class="form-select" placeholder="Cidade" %}
+            </div>
+            <div class="col-lg-3 d-flex flex-row align-items-center">
+            {% render_field form.price class="form-range"  min="0" max="50" step="10" type="range" %}
             </div> 
-            <div class="col-md-6 col-lg-3 form-group d-flex flex-row align-items-center">
-                <select class="form-select mb-2" aria-label="Tipo Imóvel">
-                  <option selected disabled="">Tipo</option>
-                  <option value="1">Casa</option>
-                  <option value="2">Apartamento</option>
-                </select> 
-            </div>
-
-            <div class="col-md-6 col-lg-3 form-group d-flex flex-row align-items-center">
-                <select class="form-select mb-2" aria-label="Preço">
-                  <option selected disabled="">Preço</option>
-                  <option value="1">100</option>
-                  <option value="2">200</option>
-                </select> 
-            </div>
-
-            <div class="col-lg-2 d-grid form-group d-flex flex-row align-items-center">
-              <button class="btn btn-primary" type="submit">Pesquisar</button>
-            </div>
-
+            <button class="col-lg-2 btn btn-icon btn-primary px-3" type="submit">
+              <i class="fa-solid fa-magnifying-glass"></i>
+              <span class="d-sm-none d-inline-block ms-2">Pesquisar</span>
+            </button>
           </div>
         </form> 
+      </div>
     </div>
-
   </div>
-</div>
-
-{% if casas_list_index %}
-  <section class="py-6">
-    <div class="container pt-5">
-      <div class="row mb-5">
-        {% for casa in casas_list_index %}
-        <div class="col-12 col-md-6 col-lg-4 mb-5 mb-lg-0">
-          <div class="card shadow">
-            <img src="{{ casa.image.url }}" class="card-img-top rounded-top img-fluid" alt="Imagem do Anúncio">
-            <div class="card-body">
-              <span class="h6 icon-tertiary small"><span class="fas fa-medal me-2"></span>CASA</span>
-              <h3 class="h5 card-title mt-3"> {{ casa.description }} </h3>
-              <p class="card-text">Endereço: {{ casa.address }}</p>
-              <p class="card-text">Preço: R$ {{ casa.price }}</p>
-              <a href="{% url 'casa-detail' casa.id %}" class="stretched-link"></a>
-            </div>
+</section> 
+<!-- Services  -->
+<section class="container mb-2 mt-5 pt-5">
+  <div class="mx-2">
+    <div class="row gx-4 mx-0 py-3">
+      <h3 class="text-center py-4 mb-5">Conheça as vantagens da RealEstate</h3>
+      <div class="col">
+        <div class="card card-hover border-0 h-100 pb-2 pb-sm-3 px-sm-3 text-center">
+          <i class="align-self-center fa-solid fa-user-secret" style="height: 100px; width: 100px;"></i>          
+          <div class="card-body">
+            <h2 class="h4 card-title">Consultores credenciados</h2>
+            <p class="card-text fs-sm">Experientes e treinados para garantir o melhor negócio pra você</p>
           </div>
-        </div> 
-        {% endfor %}
-      </div>    
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-hover border-0 h-100 pb-2 pb-sm-3 px-sm-3 text-center">
+          <i class="align-self-center fa-solid fa-gavel" style="height: 100px; width: 100px;"></i>          
+          <div class="card-body">
+            <h2 class="h4 card-title">Assessoria Jurídica</h2>
+            <p class="card-text fs-sm">Assegurando um contrato de venda detalhados e seguros</p>
+          </div>
+        </div>
+      </div>
+      <div class="col">
+        <div class="card card-hover border-0 h-100 pb-2 pb-sm-3 px-sm-3 text-center">
+          <i class="align-self-center fa-solid fa-hand-holding-dollar" style="height: 100px; width: 100px;"></i>          
+          <div class="card-body">
+            <h2 class="h4 card-title">Avaliação de Mercado</h2>
+            <p class="card-text fs-sm">Criteriosa avaliação para que seu imóvel seja anunciado no melhor preço</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </section>
-{% else %}
+  </div>
+</section>
+<!-- Best Offers -->
+<section>
+  {% if casas %}
+  <hr class="mt-3 mb-5 d-md-none">
+  <!-- Melhores Ofertas -->
+  <div class="container my-1 py-3">
+    <h3 class="my-3 ps-5">Melhores Ofertas</h3>
+    <div class="row py-3">
+      {% for casa in casas %}
+      <div class="col-sm-12 col-md-6 col-lg-3 mb-5">
+        <!-- Card -->
+        <div class="card shadow h-100 border border-0">
+          <a href="{% url 'casa-detail' casa.id %}" class="stretched-link"></a>
+          <img src="{{ casa.photo_main.url }}" class="card-img-top h-100 rounded-top img-fluid" alt="Imagem do Anúncio">
+          <!-- Body -->
+          <div class="card-body position-relative">
+            <h5 class="card-title fs-base"> {{ casa.title }} </h5>
+            <p class="card-text text-muted"> {{ casa.address }} | {{ casa.city }} </p>
+            <p class="card-text text-muted"> {{ casa.category }} | {{ casa.size }}m² </p>
+            <h6><i class="fa-solid fa-money-bill-1-wave"></i> {{ casa.price }},00</h6> 
+          </div>
+          <!-- Footer -->
+          <div class="card-footer bg-white d-flex align-items-center justify-content-center text-nowrap">
+            <span class="d-inline-block text-muted"> {{ casa.bedrooms }} <i class="fa-solid fa-bed"></i> | </span>
+            <span class="d-inline-block text-muted"> {{ casa.bathrooms }} <i class="fa-solid fa-bath"></i> | </span> 
+            <span class="d-inline-block text-muted"> {{ casa.garage }} <i class="fa-solid fa-car"></i></span>
+          </div>
+        </div>
+      </div> 
+      {% endfor %}
+    </div>  
+  </div>  
+  {% else %}
   <p>Null ou blank.</p>
-{% endif %}
-
+  {% endif %}
+</section>
 
 {% endblock %}

@@ -1,7 +1,8 @@
 # Django stuff:
 __pycache__/
 db.sqlite3
-/migrations/
+*/migrations
+media/
 
 # Environments
 .env

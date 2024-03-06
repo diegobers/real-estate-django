@@ -1,0 +1,47 @@
+{% extends 'layouts/base.html' %} 
+{% load static %}
+
+
+{% block content %}
+<!-- Catalog Content -->
+<div class="container-fluid mt-5 p-0">
+	<div class="row g-0 mt-3">
+		<!-- Catalog Grid -->
+		{% if casas %}
+		<div class="row g-4 py-4 align-items-center">
+			{% for casa in casas %}
+			<div class="col-sm-12 col-md-6 col-lg-3 mb-5">
+	      <div class="card shadow h-100 border border-0">
+	        <a href="{% url 'casa-detail' casa.id %}" class="stretched-link"></a>
+	        <img src="{{ casa.photo_main.url }}" class="card-img-top h-100 rounded-top img-fluid" alt="Imagem do Anúncio">
+	        <div class="card-body position-relative pb-3">
+	          <h5 class="card-title mt-3 mb-2 fs-base"> {{ casa.title }} </h5>
+	          <p class="card-text text-muted"> {{ casa.address }} | {{ casa.city }}</p>
+	          <p class="card-text text-muted"> {{ casa.category }} | {{ casa.size }}m²</p>
+	          <h6><i class="fa-solid fa-dollar-sign"></i>{{ casa.price }}
+	          </h6>
+	        </div>
+	        <div class="card-footer bg-white d-flex align-items-center justify-content-center mx-3 pt-3 text-nowrap">
+	          <span class="d-inline-block">
+	            {{ casa.bedrooms }}
+	            <i class="fa-solid fa-bed text-muted"></i>
+	          </span>
+	          <span class="d-inline-block mx-1 px-2 fs-sm">
+	            {{ casa.bathrooms }}
+	            <i class="fa-solid fa-bath text-muted"></i>
+	          </span>
+	          <span class="d-inline-block text-muted">
+	            {{ casa.garage }}
+	            <i class="fa-solid fa-car"></i>
+	          </span>
+	        </div>
+	      </div>
+	    </div> 
+		  {% endfor %}
+		</div>
+		{% else %}
+		  <p>Null ou blank.</p>
+		{% endif %}
+	</div>
+</div>
+{% endblock %}

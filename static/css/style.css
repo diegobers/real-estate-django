@@ -8,25 +8,25 @@
   --body-font-weight: 400;
   --body-line-height: 1.5;
   --body-text-align: left;
-  --body-color: #212529;
+  --body-color: #0d6efd;
   --body-bg: #fff;
   --heading-color: inherit;
+  --border-width: 1px;
+  --border-color: #dee2e6;
+  --border-radius: 0.375rem;
 }
-
 /* Global Settings */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
-
 head, 
 link, 
 script, 
 style {
   display: none;
 }
-
 aside, 
 body, 
 div, 
@@ -43,7 +43,6 @@ summary,
 ul {
   display: block;
 }
-
 body {
   margin: 0;
   padding-top: 65px;
@@ -57,6 +56,71 @@ body {
 }
 
 /* Typography */
+h1, 
+h2, 
+h3, 
+h4, 
+h5, 
+h6 {
+  margin-top: 0;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--heading-color);
+}
+h1 {
+  font-size: 4rem;
+}
+@media (max-width: 766px) {
+  h1 {
+    font-size: 2rem;
+  }
+}
+h2 {
+    font-size: 3rem;
+  }
+}
+@media (max-width: 766px) {
+  h2 {
+    font-size: 1.5rem;
+  }
+}
+h3 {
+  font-size: 2.5rem;
+}
+@media (max-width: 766px) {
+  h3 {
+    font-size: 1.25rem;
+  }
+}
+h4 {
+  font-size: 2rem;
+}
+@media (min-width: 766px) {
+  h4 {
+    font-size: 1rem;
+  }
+}
+h5 {
+  font-size: 1.5rem;
+}
+@media (max-width: 766px) {
+  h5 {
+    font-size: 0.75rem;
+  }
+}
+h6 {
+  font-size: 0.8rem;
+}
+@media (max-width: 766px) {
+  h6 {
+    font-size: 0.4rem;
+  }
+}
+p {
+  margin-top: 0;
+  margin-bottom: 1rem;
+}
 b, 
 strong {
   font-weight: bolder;
@@ -70,31 +134,6 @@ u {
 small {
   font-size: smaller;
 }
-h1, 
-h3 {
-  display: block;
-  margin-left: 0;
-  margin-right: 0;
-  font-weight: bold;
-  color: var(--heading-color);
-}
-h1 {
-  font-size: 2em;
-  margin-top: 0.67em;
-  margin-bottom: 0.67em;
-}
-h3 {
-  font-size: 1.17em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-}
-p {
-  margin-top: 1em;
-  margin-bottom: 1em;
-  margin-left: 0;
-  margin-right: 0;
-}
-
 /* Lists */
 ol {
   list-style-type: decimal;
@@ -112,7 +151,6 @@ ol, ul {
 li { 
   display: list-item;
 }
-
 /* Images */
 img { 
   display: inline-block;
@@ -125,14 +163,19 @@ img {
 .img-thumbnail {
   padding: 0.25rem;
   background-color: var(--body-bg);
-  border: var(--bs-border-width) solid var(--bs-border-color);
-  border-radius: var(--bs-border-radius);
+  border: var(--border-width) solid var(--border-color);
+  border-radius: var(--border-radius);
   max-width: 100%;
   height: auto;
 }
-
-
+.card.shadow:hover {
+  transform:scale(1.1);
+}
 /* Header */
+.navbar {
+  height: 65px;
+  opacity: 0.9; 
+}
 .logo {
   width: 50px;
 }
@@ -169,55 +212,10 @@ img {
   position: relative;
   z-index: 20;
 }
-.mt-my {
-  margin-top: -6rem !important;
+.mt-8 {
+  margin-top: -8rem !important;
 }
-
 #carouselImg {
   width: 420px; 
-  height: 745px;
-
+  height: 445px;
 }
-
-
-
-
-/*  --- Simple Selectors ---
- *  p === all <p>;
- *  div, p === all <div> and all <p>;            
- *  .a.b === class="a b";  
- *  .a .b === b that descendant of a;
- *  h1.border === only <h1> with class="border";
- * 
- *  --- Combinators ---
- *  div p === <p> inside <div>;
- *  div > p === <p> parent is a <div>
- *  div + p ===   first <p> placed immediately after <div>
- *  p ~ ul === every <ul> preceded by <p> 
- *
- *  --- Pseudo-classes ---
- *  a:active === selects active link;
- *  a:hover === links on mouse over;
- *  a:link === all unvisited links;
- *  input:required === <input> with "required" specified;
- *  :not(p) === all element that isn't <p>;
- * 
- *  --- Pseudo-elements ---
- *  p::after === add content after <p>;
- *  p::before ===  add content before <p>;
- *  p::first-letter === first letter <p>;
- *  p::first-line === first line <p>;
- *  ::marker === selects markers of list items;
- *  ::selection === selects elements selected by user;
- * 
- *  --- Attribute Selectors ---
- *  [target] == elements with target attribute
- *  [target="_blank"] == elements with target="_blank"
- *  [title~="home"] == attribute contains space-separated "home"
- *  [lang|="pt"] == attribute value starting with "pt"
- *  a[href^="https"] == <a> with attribute starting with "https"
- *  a[href$=".pdf"] == <a> with attribute ending with ".pdf"
- *  a[href*="test"] == <a> with attribute containing substring "test"
- * 
- * 
- * */

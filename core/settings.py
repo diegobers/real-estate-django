@@ -23,6 +23,8 @@ INSTALLED_APPS = [
     # custom apps
     'accounts',
     'products',
+    'django_filters',
+    'widget_tweaks',
 ]
 
 MIDDLEWARE = [
